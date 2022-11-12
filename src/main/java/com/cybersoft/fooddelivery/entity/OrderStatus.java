@@ -4,15 +4,26 @@ import javax.persistence.*;
 
 @Entity(name = "order_status")
 public class OrderStatus {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_order")
     Order order;
 
-    @Id
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_status")
     Status status;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Order getOrder() {
         return order;

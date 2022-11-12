@@ -13,7 +13,7 @@ public class Material {
     @Column(name = "name")
     private String name;
 
-    @OneToMany
+    @OneToMany(mappedBy = "material")
     @JsonIgnore
     private Set<FoodMaterial> foodMaterialSet;
 

@@ -13,35 +13,10 @@ public class UserServiceImp implements UserService{
 
     @Autowired
     UsersRepository usersRepository;
-//    @Override
-//    public List<Users> getUsers() {
-//        return usersRepository.findAll();
-//    }
-
-
-
-    @Override
-    public List<User> getUsersByEmail(String email) {
-        return usersRepository.findByEmail(email);
-    }
 
     @Override
     public List<User> getUserByEmailAndPassword(String email, String password) {
         return usersRepository.findByEmailAndPassword(email, password);
     }
 
-    @Override
-    public List<User> getUserByEmailPassword(String email, String password) {
-        return usersRepository.getUsersByEmailPassword(email, password);
-    }
-
-    @Override
-    public List<User> getRoleUser() {
-        return usersRepository.getRoleUser();
-    }
-
-    @Override
-    public List<Map<?, Object>> getRoleUserJoin() {
-        return usersRepository.getRoleUserJoin();
-    }
 }

@@ -4,13 +4,16 @@ import javax.persistence.*;
 
 @Entity(name = "food_material")
 public class FoodMaterial {
+
     @Id
-    @ManyToOne(cascade = CascadeType.ALL)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @ManyToOne
     @JoinColumn(name = "id_food")
     Food food;
 
-    @Id
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "id_material")
     Material material;
 

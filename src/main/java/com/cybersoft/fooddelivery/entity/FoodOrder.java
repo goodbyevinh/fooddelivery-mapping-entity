@@ -5,6 +5,9 @@ import javax.persistence.*;
 @Entity(name = "food_order")
 public class FoodOrder {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     @Column(name = "price")
     private float price;
     @Column(name = "quality")
@@ -12,15 +15,21 @@ public class FoodOrder {
     @Column(name = "id_promo")
     private float idPromo;
 
-    @Id
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_order")
     Order order;
 
-    @Id
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_food")
     Food food;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public float getPrice() {
         return price;

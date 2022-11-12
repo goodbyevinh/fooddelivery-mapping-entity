@@ -1,5 +1,6 @@
 package com.cybersoft.fooddelivery.controller;
 
+import com.cybersoft.fooddelivery.entity.User;
 import com.cybersoft.fooddelivery.payload.ResponseData;
 import com.cybersoft.fooddelivery.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +23,10 @@ public class LoginController {
                         ) {
         ResponseData responseData = new ResponseData();
         responseData.setStatusCode(200);
-        //List<Users> list = userService.getUserByEmailAndPassword(email, password);
-        //List<Users> list = userService.getUserByEmailPassword(email, password);
-        //List<Users> list = userService.getRoleUser();
-        List<Map<?,Object>> list = userService.getRoleUserJoin();
+
+        List<User> list = userService.getUserByEmailAndPassword(email, password);
         responseData.setSuccess(list != null);
         responseData.setData(list);
         return responseData;
-    }
-    @PostMapping("/email")
-    public Object loginMail(@RequestParam("email") String email) {
-        return userService.getUsersByEmail(email);
     }
 }
